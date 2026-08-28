@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Card Suit Counter</title>
+<title>Trex Card Counter</title>
 
 <style>
 body {
@@ -18,10 +18,14 @@ body {
 }
 
 .container {
-    width: 350px;
+    width: 380px;
     background: #222;
     padding: 20px;
     border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
 }
 
 .row {
@@ -46,120 +50,4 @@ button {
     height: 50px;
     border: none;
     border-radius: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.plus {
-    background: #28a745;
-    color: white;
-}
-
-.minus {
-    background: #dc3545;
-    color: white;
-}
-
-.stats {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 22px;
-}
-
-.reset {
-    width: 100%;
-    height: 50px;
-    margin-top: 15px;
-    background: #0078d4;
-    color: white;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h2 style="text-align:center">Cards Thrown</h2>
-
-<div class="row">
-    <span>♠ Spades</span>
-    <button class="minus" onclick="removeCard('spades')">-</button>
-    <span id="spades" class="count">0</span>
-    <button class="plus" onclick="addCard('spades')">+</button>
-</div>
-
-<div class="row">
-    <span>♥ Hearts</span>
-    <button class="minus" onclick="removeCard('hearts')">-</button>
-    <span id="hearts" class="count">0</span>
-    <button class="plus" onclick="addCard('hearts')">+</button>
-</div>
-
-<div class="row">
-    <span>♦ Diamonds</span>
-    <button class="minus" onclick="removeCard('diamonds')">-</button>
-    <span id="diamonds" class="count">0</span>
-    <button class="plus" onclick="addCard('diamonds')">+</button>
-</div>
-
-<div class="row">
-    <span>♣ Clubs</span>
-    <button class="minus" onclick="removeCard('clubs')">-</button>
-    <span id="clubs" class="count">0</span>
-    <button class="plus" onclick="addCard('clubs')">+</button>
-</div>
-
-<div class="stats">
-    Total Thrown: <span id="total">0</span>/52
-</div>
-
-<button class="reset" onclick="resetAll()">Reset</button>
-
-</div>
-
-<script>
-function addCard(suit) {
-    let el = document.getElementById(suit);
-    let count = Number(el.innerText);
-
-    if (count < 13) {
-        el.innerText = count + 1;
-    }
-
-    updateTotal();
-}
-
-function removeCard(suit) {
-    let el = document.getElementById(suit);
-    let count = Number(el.innerText);
-
-    if (count > 0) {
-        el.innerText = count - 1;
-    }
-
-    updateTotal();
-}
-
-function updateTotal() {
-    let total =
-        Number(document.getElementById("spades").innerText) +
-        Number(document.getElementById("hearts").innerText) +
-        Number(document.getElementById("diamonds").innerText) +
-        Number(document.getElementById("clubs").innerText);
-
-    document.getElementById("total").innerText = total;
-}
-
-function resetAll() {
-    document.getElementById("spades").innerText = 0;
-    document.getElementById("hearts").innerText = 0;
-    document.getElementById("diamonds").innerText = 0;
-    document.getElementById("clubs").innerText = 0;
-
-    updateTotal();
-}
-</script>
-
-</body>
-</html>
+    font
