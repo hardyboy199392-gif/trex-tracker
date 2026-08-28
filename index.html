@@ -7,65 +7,71 @@
 
 <style>
 body {
-    background:#111;
-    color:white;
-    font-family:Arial,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .container {
-    width:350px;
-    background:#222;
-    padding:20px;
-    border-radius:15px;
+    width: 350px;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .row {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:12px 0;
-    padding:12px;
-    background:#333;
-    border-radius:10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+    padding: 12px;
+    background: #333;
+    border-radius: 10px;
 }
 
 .count {
-    font-size:28px;
-    font-weight:bold;
-    width:50px;
-    text-align:center;
+    font-size: 28px;
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
 }
 
 button {
-    width:50px;
-    height:50px;
-    border:none;
-    border-radius:10px;
-    font-size:24px;
-    cursor:pointer;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .plus {
-    background:#28a745;
-    color:white;
+    background: #28a745;
+    color: white;
+}
+
+.minus {
+    background: #dc3545;
+    color: white;
 }
 
 .stats {
-    text-align:center;
-    margin-top:20px;
-    font-size:22px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 22px;
 }
 
 .reset {
-    width:100%;
-    height:50px;
-    margin-top:15px;
-    background:#0078d4;
-    color:white;
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    background: #0078d4;
+    color: white;
 }
 </style>
 </head>
@@ -78,24 +84,28 @@ button {
 
 <div class="row">
     <span>♠ Spades</span>
+    <button class="minus" onclick="removeCard('spades')">-</button>
     <span id="spades" class="count">0</span>
     <button class="plus" onclick="addCard('spades')">+</button>
 </div>
 
 <div class="row">
     <span>♥ Hearts</span>
+    <button class="minus" onclick="removeCard('hearts')">-</button>
     <span id="hearts" class="count">0</span>
     <button class="plus" onclick="addCard('hearts')">+</button>
 </div>
 
 <div class="row">
     <span>♦ Diamonds</span>
+    <button class="minus" onclick="removeCard('diamonds')">-</button>
     <span id="diamonds" class="count">0</span>
     <button class="plus" onclick="addCard('diamonds')">+</button>
 </div>
 
 <div class="row">
     <span>♣ Clubs</span>
+    <button class="minus" onclick="removeCard('clubs')">-</button>
     <span id="clubs" class="count">0</span>
     <button class="plus" onclick="addCard('clubs')">+</button>
 </div>
@@ -111,11 +121,21 @@ button {
 <script>
 function addCard(suit) {
     let el = document.getElementById(suit);
-    let count = parseInt(el.textContent);
+    let count = Number(el.innerText);
 
     if (count < 13) {
-        count++;
-        el.textContent = count;
+        el.innerText = count + 1;
+    }
+
+    updateTotal();
+}
+
+function removeCard(suit) {
+    let el = document.getElementById(suit);
+    let count = Number(el.innerText);
+
+    if (count > 0) {
+        el.innerText = count - 1;
     }
 
     updateTotal();
@@ -123,19 +143,19 @@ function addCard(suit) {
 
 function updateTotal() {
     let total =
-        parseInt(document.getElementById('spades').textContent) +
-        parseInt(document.getElementById('hearts').textContent) +
-        parseInt(document.getElementById('diamonds').textContent) +
-        parseInt(document.getElementById('clubs').textContent);
+        Number(document.getElementById("spades").innerText) +
+        Number(document.getElementById("hearts").innerText) +
+        Number(document.getElementById("diamonds").innerText) +
+        Number(document.getElementById("clubs").innerText);
 
-    document.getElementById('total').textContent = total;
+    document.getElementById("total").innerText = total;
 }
 
 function resetAll() {
-    document.getElementById('spades').textContent = 0;
-    document.getElementById('hearts').textContent = 0;
-    document.getElementById('diamonds').textContent = 0;
-    document.getElementById('clubs').textContent = 0;
+    document.getElementById("spades").innerText = 0;
+    document.getElementById("hearts").innerText = 0;
+    document.getElementById("diamonds").innerText = 0;
+    document.getElementById("clubs").innerText = 0;
 
     updateTotal();
 }
