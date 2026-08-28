@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trex Card Counter</title>
 
 <style>
 body {
+    margin: 0;
     background: #111;
     color: white;
     font-family: Arial, sans-serif;
@@ -14,7 +15,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
 .container {
@@ -22,32 +22,35 @@ body {
     background: #222;
     padding: 20px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 
 h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 12px 0;
-    padding: 12px;
+    justify-content: space-between;
     background: #333;
+    padding: 12px;
     border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.suit {
+    width: 90px;
 }
 
 .count {
     font-size: 28px;
     font-weight: bold;
-    width: 50px;
+    width: 40px;
     text-align: center;
 }
 
 button {
-    width: 50px;
-    height: 50px;
     border: none;
-    border-radius: 10px;
-    font
+    border
